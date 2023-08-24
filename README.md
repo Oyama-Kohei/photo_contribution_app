@@ -1,6 +1,6 @@
-# Android_Trip_2023
+# Android_SkeletonProject 
 
-
+モバイル領域活動において、新規モバイル案件の開発支援および立ち上げ支援を行うために、軽量なテンプレートを作成するためのプロジェクト。
 
 ## Getting started
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://repos.tdctechsupport.com/t2020029/android_trip_2023.git
+git remote add origin https://repos.tdctechsupport.com/dt-guilds/mobile/skeleton-project/android_skeletonproject.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://repos.tdctechsupport.com/t2020029/android_trip_2023/-/settings/integrations)
+- [ ] [Set up project integrations](https://repos.tdctechsupport.com/dt-guilds/mobile/skeleton-project/android_skeletonproject/-/settings/integrations)
 
 ## Collaborate with your team
 
@@ -30,7 +30,7 @@ git push -uf origin main
 - [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
 - [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
 - [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
 
 ## Test and Deploy
 
