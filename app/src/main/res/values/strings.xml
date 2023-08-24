@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="unexpected_error_dialog">想定外のエラーが発生しました。</string>
+
+    <!-- ログイン画面 -->
+    <string name="mailAddress">メールアドレス</string>
+    <string name="password">パスワード</string>
+    <string name="login">ログイン</string>
+    <!-- ホーム画面 -->
+    <string name="success">success!!</string>
+</resources>
