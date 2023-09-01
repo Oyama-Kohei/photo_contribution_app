@@ -41,8 +41,10 @@ class LoginFragment : Fragment() {
         viewModel.onTransit.observe(
             viewLifecycleOwner,
         ) {
-            val intent = HomeActivity.getIntent(requireContext())
-            startActivity(intent)
+            if(it) {
+                val intent = HomeActivity.getIntent(requireContext())
+                startActivity(intent)
+            }
         }
 
         viewModel.errorDialogMsg.observe(

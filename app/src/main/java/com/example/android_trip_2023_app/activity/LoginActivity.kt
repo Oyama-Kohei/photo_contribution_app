@@ -11,7 +11,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        setSupportActionBar(findViewById(R.id.login_toolbar_main))
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {

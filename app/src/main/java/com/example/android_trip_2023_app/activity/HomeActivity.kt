@@ -15,6 +15,5 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        setSupportActionBar(findViewById(R.id.home_toolbar_main))
     }
 }
