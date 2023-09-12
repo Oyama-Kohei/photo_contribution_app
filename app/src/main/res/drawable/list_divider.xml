@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:right="30sp"
+        android:left="30sp"> <!-- 右側の余白を8dpに設定 -->
+        <shape android:shape="rectangle">
+            <solid android:color="@color/gray20" /> <!-- 区切り線の色を設定 -->
+        </shape>
+    </item>
+</layer-list>

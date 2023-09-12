@@ -37,7 +37,8 @@ class AreaActivityGridAdapter(private val context: Context, private val itemList
         // itemListからデータを取得してTextViewに設定
         val item = itemList[position]
         activityTitle.text = item.activity_title
-        activityPoint.text = item.point.toString()
+        val pointStr = "${item.point} pt"
+        activityPoint.text = pointStr
 
         val screenWidth = Resources.getSystem().displayMetrics.widthPixels
 

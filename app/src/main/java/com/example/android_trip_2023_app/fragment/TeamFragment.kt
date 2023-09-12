@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
 import androidx.lifecycle.ViewModelProvider
 import com.example.android_trip_2023_app.R
+import com.example.android_trip_2023_app.adapter.TeamListAdapter
 import com.example.android_trip_2023_app.databinding.FragmentTeamBinding
 import com.example.android_trip_2023_app.view_model.TeamViewModel
 
@@ -30,6 +32,15 @@ class TeamFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val listView: ListView = view.findViewById(R.id.team_list)
+
+        viewModel.teamData.observe(
+            viewLifecycleOwner,
+        ) {
+            val teamListAdapter = TeamListAdapter(requireContext(), it)
+            listView.adapter = teamListAdapter
+        }
 
         viewModel.errorDialogMsg.observe(
             viewLifecycleOwner,

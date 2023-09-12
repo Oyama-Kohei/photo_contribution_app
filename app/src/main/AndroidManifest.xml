@@ -14,11 +14,6 @@
         android:theme="@style/Theme.MyApplicationWithoutTitle"
         tools:targetApi="n">
         <activity
-            android:name=".activity.MainActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main"
-            android:theme="@style/Theme.MyApplicationWithoutTitle" />
-        <activity
             android:name=".activity.HomeActivity"
             android:exported="false"
             android:label="ホーム" />

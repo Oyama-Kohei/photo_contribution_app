@@ -14,11 +14,11 @@ class ActivityViewModel : ViewModel() {
     private var _errorDialogMsg = MutableLiveData<String>()
 
     init {
-        val newData = fetchDataFromRepository()
+        val newData = fetchActivityData()
         _activityData.value = newData
     }
 
-    private fun fetchDataFromRepository(): List<ActivityResponse> {
+    private fun fetchActivityData(): List<ActivityResponse> {
         return listOf(
             ActivityResponse(
                 "エリア1",
