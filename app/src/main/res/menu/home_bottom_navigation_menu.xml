@@ -2,10 +2,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     tools:ignore="MissingDefaultResource">
     <item
-        android:id="@+id/navigation_dashboard"
-        android:title="Dashboard"/>
+        android:id="@+id/navigation_activity"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="activity"/>
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:title="Notifications"/>
+        android:id="@+id/navigation_team"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="team"/>
+
+    <item
+        android:id="@+id/navigation_contribution"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="contribution"/>
 </menu>

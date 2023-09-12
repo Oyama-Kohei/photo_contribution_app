@@ -12,6 +12,7 @@
         <!-- Title bar -->
         <item name="toolbarStyle">@style/ActionBarStyle</item>
     </style>
+
     <style name="ActionBarStyle" parent="Widget.MaterialComponents.Toolbar.Primary">
         <item name="android:textColorPrimary">?attr/colorOnPrimary</item>
     </style>
@@ -29,6 +30,7 @@
         <item name="boxCornerRadiusBottomStart">5dp</item>
         <item name="boxCornerRadiusBottomEnd">5dp</item>
     </style>
+
     <style name="ErrorOutlinedRoundedBox" parent="OutlinedRoundedBox">
         <item name="boxStrokeColor">@color/error_outlined_rounded_box</item>
     </style>

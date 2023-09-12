@@ -1,11 +1,12 @@
 package com.example.android_trip_2023_app.view_model
 
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.android_trip_2023_app.model.ActivityData
+import com.example.android_trip_2023_app.model.ActivityResponse
 
-class HomeViewModel : ViewModel() {
+class ContributionViewModel : ViewModel() {
     val errorDialogMsg: LiveData<String> get() = _errorDialogMsg
     val selectedItemId: LiveData<Int> get() = _selectedItemId
 
@@ -14,6 +15,5 @@ class HomeViewModel : ViewModel() {
 
     fun onNavigationItemSelected(itemId: Int) {
         _selectedItemId.value = itemId
-        return
     }
 }
