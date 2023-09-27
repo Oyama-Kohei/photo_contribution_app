@@ -9,13 +9,19 @@ import com.example.android_trip_2023_app.model.ActivityResponse
 class ActivityViewModel : ViewModel() {
     val activityData: LiveData<List<ActivityResponse>> get() = _activityData
     val errorDialogMsg: LiveData<String> get() = _errorDialogMsg
+    val activeCameraFlag: LiveData<Boolean> get() = _activeCameraFlag
 
     private var _activityData = MutableLiveData<List<ActivityResponse>>()
     private var _errorDialogMsg = MutableLiveData<String>()
+    private var _activeCameraFlag = MutableLiveData<Boolean>()
 
     init {
         val newData = fetchActivityData()
         _activityData.value = newData
+    }
+
+    fun dispatchTakePictureIntent() {
+        _activeCameraFlag.value = true
     }
 
     private fun fetchActivityData(): List<ActivityResponse> {

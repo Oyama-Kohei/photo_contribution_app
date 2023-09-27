@@ -5,13 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.GridView
 import android.widget.TextView
 import com.example.android_trip_2023_app.R
 import com.example.android_trip_2023_app.model.ActivityResponse
+import com.example.android_trip_2023_app.view_model.ActivityViewModel
 import kotlin.math.ceil
 
-class AreaActivityListAdapter(context: Context, private val dataList: List<ActivityResponse>) :
+class AreaActivityListAdapter(
+    context: Context,
+    private val dataList: List<ActivityResponse>,
+    private val viewModel: ActivityViewModel
+) :
     ArrayAdapter<ActivityResponse>(context, R.layout.area_activity_list_item, dataList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -19,7 +25,8 @@ class AreaActivityListAdapter(context: Context, private val dataList: List<Activ
         val viewHolder: ViewHolder
 
         if (rowView == null) {
-            val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val inflater =
+                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             rowView = inflater.inflate(R.layout.area_activity_list_item, parent, false)
 
             // データを取得
@@ -30,25 +37,32 @@ class AreaActivityListAdapter(context: Context, private val dataList: List<Activ
 
             // ViewHolderを初期化
             viewHolder = ViewHolder()
-            viewHolder.textView = rowView.findViewById(R.id.area_title)
-            viewHolder.gridView = rowView.findViewById(R.id.area_activity_grid)
+            viewHolder.areaText = rowView.findViewById(R.id.area_title)
+            viewHolder.freeText = rowView.findViewById(R.id.free)
+            viewHolder.activityGrid = rowView.findViewById(R.id.area_activity_grid)
 
             rowView.tag = viewHolder
 
             // データをテキストビューに表示
-            viewHolder.textView.text = data.area_name
+            viewHolder.areaText.text = data.area_name
+
+            // データをテキストビューに表示
+            viewHolder.freeText.setOnClickListener {
+                viewModel.dispatchTakePictureIntent()
+            }
 
             // GridViewのアダプターを初期化し、データをバインド
             val gridAdapter = AreaActivityGridAdapter(context, data.activity_list)
-            viewHolder.gridView.adapter = gridAdapter
+            viewHolder.activityGrid.adapter = gridAdapter
         }
         return rowView!!
     }
 
     // ViewHolderパターンを使用してビューホルダーをキャッシュ
     private class ViewHolder {
-        lateinit var textView: TextView
-        lateinit var gridView: GridView // GridViewを追加
+        lateinit var areaText: TextView
+        lateinit var freeText: Button
+        lateinit var activityGrid: GridView // GridViewを追加
     }
 
     private fun calculateGridViewHeight(dataSize: Int): Int {
