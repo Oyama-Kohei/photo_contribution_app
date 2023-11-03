@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/activityFragment">
+
+    <fragment
+        android:id="@+id/activityFragment"
+        android:name="com.example.android_trip_2023_app.fragment.ActivityFragment"
+        android:label="ActivityFragment" >
+        <action
+            android:id="@+id/action_activityFragment_to_contributionPostFragment"
+            app:destination="@id/contributionPostFragment" />
+        <action
+            android:id="@+id/action_activityFragment_to_teamFragment"
+            app:destination="@id/teamFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contributionPostFragment"
+        android:name="com.example.android_trip_2023_app.fragment.ContributionPostFragment"
+        android:label="ContributionPostFragment" />
+    <fragment
+        android:id="@+id/teamFragment"
+        android:name="com.example.android_trip_2023_app.fragment.TeamFragment"
+        android:label="TeamFragment" />
+</navigation>

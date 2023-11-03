@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -16,13 +16,43 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                android:theme="@style/ActionBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="">
+
+                <Button
+                    android:id="@+id/free_button"
+                    android:layout_width="120sp"
+                    android:layout_height="60sp"
+                    android:layout_marginEnd="10sp"
+                    android:layout_gravity="end"
+                    android:backgroundTint="@color/teal_700"
+                    android:text="@string/free_contribution"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.appcompat.widget.Toolbar>
+
             <ListView
                 android:id="@+id/area_activity_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:divider="@drawable/list_divider"
                 android:dividerHeight="1dp"
-                android:paddingBottom="100sp"/>
+                android:layout_marginTop="?attr/actionBarSize"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

@@ -38,7 +38,6 @@ class AreaActivityListAdapter(
             // ViewHolderを初期化
             viewHolder = ViewHolder()
             viewHolder.areaText = rowView.findViewById(R.id.area_title)
-            viewHolder.freeText = rowView.findViewById(R.id.free)
             viewHolder.activityGrid = rowView.findViewById(R.id.area_activity_grid)
 
             rowView.tag = viewHolder
@@ -46,13 +45,8 @@ class AreaActivityListAdapter(
             // データをテキストビューに表示
             viewHolder.areaText.text = data.area_name
 
-            // データをテキストビューに表示
-            viewHolder.freeText.setOnClickListener {
-                viewModel.dispatchTakePictureIntent()
-            }
-
             // GridViewのアダプターを初期化し、データをバインド
-            val gridAdapter = AreaActivityGridAdapter(context, data.activity_list)
+            val gridAdapter = AreaActivityGridAdapter(context, data.activity_list, viewModel)
             viewHolder.activityGrid.adapter = gridAdapter
         }
         return rowView!!
@@ -61,7 +55,6 @@ class AreaActivityListAdapter(
     // ViewHolderパターンを使用してビューホルダーをキャッシュ
     private class ViewHolder {
         lateinit var areaText: TextView
-        lateinit var freeText: Button
         lateinit var activityGrid: GridView // GridViewを追加
     }
 

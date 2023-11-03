@@ -6,6 +6,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.provider.MediaStore
@@ -13,19 +14,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ListView
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.android_trip_2023_app.R
+import com.example.android_trip_2023_app.activity.ContributionPostsActivity
 import com.example.android_trip_2023_app.adapter.AreaActivityListAdapter
 import com.example.android_trip_2023_app.databinding.FragmentActivityBinding
 import com.example.android_trip_2023_app.view_model.ActivityViewModel
 
 class ActivityFragment : Fragment() {
     companion object {
-        const val CAMERA_REQUEST_CODE = 1
         const val CAMERA_PERMISSION_REQUEST_CODE = 2
     }
 
@@ -49,6 +50,11 @@ class ActivityFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val listView: ListView = view.findViewById(R.id.area_activity_list)
+        val freeButtonView: Button = view.findViewById(R.id.free_button)
+
+        freeButtonView.setOnClickListener {
+            viewModel.dispatchTakePictureIntent(null)
+        }
 
         viewModel.activityData.observe(
             viewLifecycleOwner,
@@ -74,6 +80,15 @@ class ActivityFragment : Fragment() {
             if(it) {
                 launchCamera()
             }
+        }
+
+        viewModel.contributionImage.observe(
+            viewLifecycleOwner,
+        ) {
+            val intent = ContributionPostsActivity.getIntent(requireContext())
+            intent.putExtra("image_data", it)
+            intent.putExtra("activity_title", viewModel.targetActivityTitle)
+            startActivity(intent)
         }
     }
 
@@ -112,8 +127,12 @@ class ActivityFragment : Fragment() {
 
     private val takePictureLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
+
             val data: Intent? = result.data
-            // ここで画像が撮影された後の処理を行います
+            if(data != null) {
+                val imageBitmap: Bitmap = data.extras?.get("data") as Bitmap
+                viewModel.setImage(imageBitmap)
+            }
         }
     }
 

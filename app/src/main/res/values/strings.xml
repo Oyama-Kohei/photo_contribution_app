@@ -2,11 +2,14 @@
 <resources>
     <string name="app_name">trip2023</string>
     <string name="unexpected_error_dialog">想定外のエラーが発生しました。</string>
+    <string name="contribution_confirm_dialog">撮影した写真を投稿しますか？</string>
 
     <!-- ログイン画面 -->
-    <string name="mailAddress">メールアドレス</string>
+    <string name="mail_address">メールアドレス</string>
     <string name="password">パスワード</string>
     <string name="login">ログイン</string>
+    <string name="contribution">投稿</string>
+    <string name="free_contribution">FREE投稿</string>
     <!-- ホーム画面 -->
     <string name="success">success!!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>

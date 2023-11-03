@@ -11,8 +11,13 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.android_trip_2023_app.R
 import com.example.android_trip_2023_app.model.ActivityData
+import com.example.android_trip_2023_app.view_model.ActivityViewModel
 
-class AreaActivityGridAdapter(private val context: Context, private val itemList: List<ActivityData>) : BaseAdapter() {
+class AreaActivityGridAdapter(
+    private val context: Context,
+    private val itemList: List<ActivityData>,
+    private val viewModel: ActivityViewModel
+    ) : BaseAdapter() {
 
     override fun getCount(): Int {
         return itemList.size
@@ -36,6 +41,11 @@ class AreaActivityGridAdapter(private val context: Context, private val itemList
 
         // itemListからデータを取得してTextViewに設定
         val item = itemList[position]
+
+        gridViewItem.setOnClickListener {
+            viewModel.dispatchTakePictureIntent(item.activity_title)
+        }
+
         activityTitle.text = item.activity_title
         val pointStr = "${item.point} pt"
         activityPoint.text = pointStr
