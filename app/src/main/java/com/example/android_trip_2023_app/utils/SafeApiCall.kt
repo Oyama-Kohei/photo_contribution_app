@@ -6,17 +6,18 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 import java.io.IOException
+import java.lang.reflect.Type
 import java.net.SocketTimeoutException
 
-suspend fun <T> safeApiCall(dispatcher: CoroutineDispatcher, type: Class<T>, apiCall: suspend () -> Response<T>): ResultHandler<T> {
+suspend fun <T> safeApiCall(dispatcher: CoroutineDispatcher, type: Type, apiCall: suspend () -> Response<T>): ResultHandler<T> {
     return withContext(dispatcher) {
         try {
             val service = apiCall()
             if (service.isSuccessful) {
-                val serviceResponse = service.body()
-                return@withContext ResultHandler.Success(serviceResponse)
+                val resultResponse = service.body()
+                return@withContext ResultHandler.Success(resultResponse)
             } else if (service.code() == 401) {
-                val unAuthorisedResponse = Gson().fromJson(service.errorBody()?.string(), type)
+                val unAuthorisedResponse = Gson().fromJson<T>(service.errorBody()?.string(), type)
                 return@withContext ResultHandler.UnauthorisedResponse(unAuthorisedResponse)
             } else {
                 return@withContext ResultHandler.UnexpectedException

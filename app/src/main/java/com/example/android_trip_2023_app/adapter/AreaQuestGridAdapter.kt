@@ -10,21 +10,21 @@ import android.widget.AbsListView
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.android_trip_2023_app.R
-import com.example.android_trip_2023_app.model.ActivityData
-import com.example.android_trip_2023_app.view_model.ActivityViewModel
+import com.example.android_trip_2023_app.model.QuestResponse
+import com.example.android_trip_2023_app.view_model.QuestViewModel
 
-class AreaActivityGridAdapter(
+class AreaQuestGridAdapter(
     private val context: Context,
-    private val itemList: List<ActivityData>,
-    private val viewModel: ActivityViewModel
+    private val data: QuestResponse,
+    private val viewModel: QuestViewModel
     ) : BaseAdapter() {
 
     override fun getCount(): Int {
-        return itemList.size
+        return data.questions.size
     }
 
     override fun getItem(position: Int): Any {
-        return itemList[position]
+        return data.questions[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -40,22 +40,26 @@ class AreaActivityGridAdapter(
         val activityPoint = gridViewItem.findViewById<TextView>(R.id.activity_point)
 
         // itemListからデータを取得してTextViewに設定
-        val item = itemList[position]
+        val item = data.questions[position]
 
         gridViewItem.setOnClickListener {
-            viewModel.dispatchTakePictureIntent(item.activity_title)
+            viewModel.dispatchTakePictureIntent(item, data.areaName)
         }
 
-        activityTitle.text = item.activity_title
-        val pointStr = "${item.point} pt"
+        activityTitle.text = item.questionName
+        var pointStr = ""
+        pointStr = if (item.point != null) {
+            "${item.point} pt"
+        } else {
+            "AI採点"
+        }
         activityPoint.text = pointStr
 
         val screenWidth = Resources.getSystem().displayMetrics.widthPixels
 
         // Gridアイテムの高さを指定
         val itemWidth = screenWidth * 2 / 5
-        val itemHeight = 350
-        gridViewItem.layoutParams = AbsListView.LayoutParams(itemWidth, itemHeight)
+        gridViewItem.layoutParams = AbsListView.LayoutParams(itemWidth, itemWidth)
 
         return gridViewItem
     }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">trip2023</string>
+    <string name="app_name">DTTrip</string>
     <string name="unexpected_error_dialog">想定外のエラーが発生しました。</string>
     <string name="contribution_confirm_dialog">撮影した写真を投稿しますか？</string>
+    <string name="contribution_complete_dialog">投稿が完了しました！</string>
 
     <!-- ログイン画面 -->
     <string name="mail_address">メールアドレス</string>
@@ -10,8 +11,13 @@
     <string name="login">ログイン</string>
     <string name="contribution">投稿</string>
     <string name="free_contribution">FREE投稿</string>
+    <string name="login_error_dialog">ログインに失敗しました。\nメールアドレスを確認してください！</string>
     <!-- ホーム画面 -->
     <string name="success">success!!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main">MainActivity</string>
+    <!-- クエスト一覧画面 -->
+    <string name="quest_image_confirm">投稿に使用する画像の取得方法を選択してください。</string>
+    <string name="team_map">マップ表示</string>
+    <string name="team_point">得点表示</string>
 </resources>

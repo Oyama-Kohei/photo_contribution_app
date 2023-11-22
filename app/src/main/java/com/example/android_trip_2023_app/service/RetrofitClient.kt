@@ -20,5 +20,8 @@ object RetrofitClient {
         .client(okHttpClient)
         .build()
 
-    var loginApiService: LoginApiService = retrofit.create(LoginApiService::class.java)
+    var teamApiService: TeamApiService = retrofit.create(TeamApiService::class.java)
+    var pointSummaryApiService: PointSummaryApiService = retrofit.create(PointSummaryApiService::class.java)
+    var questApiService: QuestApiService = retrofit.create(QuestApiService::class.java)
+    var contributionApiService: ContributionApiService = retrofit.create(ContributionApiService::class.java)
 }

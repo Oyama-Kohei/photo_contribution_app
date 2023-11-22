@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import android.widget.ProgressBar
 import androidx.lifecycle.ViewModelProvider
 import com.example.android_trip_2023_app.R
 import com.example.android_trip_2023_app.adapter.ContributionListAdapter
-import com.example.android_trip_2023_app.adapter.TeamListAdapter
 import com.example.android_trip_2023_app.databinding.FragmentContributionBinding
 import com.example.android_trip_2023_app.view_model.ContributionViewModel
 
@@ -26,6 +26,7 @@ class ContributionFragment : Fragment() {
         binding = FragmentContributionBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[ContributionViewModel::class.java]
 
+        viewModel.init(requireContext())
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -53,5 +54,25 @@ class ContributionFragment : Fragment() {
                     .show()
             }
         }
+
+        viewModel.onLoading.observe(
+            viewLifecycleOwner,
+        ) {
+            if (it) {
+                showLoading(view)
+            } else {
+                hideLoading(view)
+            }
+        }
+    }
+
+    private fun showLoading(view: View) {
+        val loadingProgressBar: ProgressBar = view.findViewById(R.id.progress_circular)
+        loadingProgressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideLoading(view: View) {
+        val loadingProgressBar: ProgressBar = view.findViewById(R.id.progress_circular)
+        loadingProgressBar.visibility = View.GONE
     }
 }

@@ -7,10 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import android.widget.ProgressBar
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import com.example.android_trip_2023_app.R
 import com.example.android_trip_2023_app.adapter.TeamListAdapter
 import com.example.android_trip_2023_app.databinding.FragmentTeamBinding
+import com.example.android_trip_2023_app.view_model.TeamMapViewModel
 import com.example.android_trip_2023_app.view_model.TeamViewModel
 
 class TeamFragment : Fragment() {
@@ -24,6 +28,7 @@ class TeamFragment : Fragment() {
     ): View {
         binding = FragmentTeamBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[TeamViewModel::class.java]
+        viewModel.init(requireContext())
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -35,7 +40,7 @@ class TeamFragment : Fragment() {
 
         val listView: ListView = view.findViewById(R.id.team_list)
 
-        viewModel.teamData.observe(
+        viewModel.pointSummaryData.observe(
             viewLifecycleOwner,
         ) {
             val teamListAdapter = TeamListAdapter(requireContext(), it)
@@ -52,5 +57,49 @@ class TeamFragment : Fragment() {
                     .show()
             }
         }
+
+        viewModel.onTransitMap.observe(
+            viewLifecycleOwner,
+        ) {
+            if (it) {
+                val initialFragment = TeamMapFragment()
+                val bundle = Bundle().apply {
+                    putString("mountain_area_color", viewModel.getMountainTeamColor(requireContext()))
+                    putString("makiba_area_color", viewModel.getMakibaTeamColor(requireContext()))
+                    putString("fruit_area_color", viewModel.getFruitTeamColor(requireContext()))
+                    putString("wakuwaku_area_color", viewModel.getWakuwakuTeamColor(requireContext()))
+                }
+                initialFragment.arguments = bundle
+                replaceFragment(initialFragment)
+            }
+        }
+
+        viewModel.onLoading.observe(
+            viewLifecycleOwner,
+        ) {
+            if (it) {
+                showLoading(view)
+            } else {
+                hideLoading(view)
+            }
+        }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val activityFragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val transaction: FragmentTransaction = activityFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+    private fun showLoading(view: View) {
+        val loadingProgressBar: ProgressBar = view.findViewById(R.id.progress_circular)
+        loadingProgressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideLoading(view: View) {
+        val loadingProgressBar: ProgressBar = view.findViewById(R.id.progress_circular)
+        loadingProgressBar.visibility = View.GONE
     }
 }

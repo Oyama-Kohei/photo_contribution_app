@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/activityFragment"
-        android:name="com.example.android_trip_2023_app.fragment.ActivityFragment"
+        android:name="com.example.android_trip_2023_app.fragment.QuestFragment"
         android:label="ActivityFragment" >
         <action
             android:id="@+id/action_activityFragment_to_contributionPostFragment"

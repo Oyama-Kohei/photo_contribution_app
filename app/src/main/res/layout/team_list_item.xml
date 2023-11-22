@@ -8,23 +8,35 @@
         android:layout_height="80sp"
         android:layout_marginHorizontal="20sp">
 
+        <ImageView
+            android:id="@+id/team_icon_team_list"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:background="@drawable/team_icon_oval"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/team_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/team_name"
             android:layout_width="200sp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            android:gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/team_point"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="30sp"
             android:gravity="center_vertical"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/team_name"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

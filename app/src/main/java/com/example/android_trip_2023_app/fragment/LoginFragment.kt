@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.android_trip_2023_app.databinding.FragmentLoginBinding
@@ -18,7 +19,6 @@ class LoginFragment : Fragment() {
     private lateinit var viewModel: LoginViewModel
     private lateinit var binding: FragmentLoginBinding
     private lateinit var emailField: TextInputLayout
-    private lateinit var passwordField: TextInputLayout
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,8 +26,8 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
-
+        viewModel = ViewModelProvider(this)[LoginViewModel()::class.java]
+        viewModel.init(requireContext())
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -36,7 +36,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         emailField = this.requireView().findViewById(R.id.emailField)
-        passwordField = this.requireView().findViewById(R.id.passwordField)
 
         viewModel.onTransit.observe(
             viewLifecycleOwner,
@@ -58,16 +57,34 @@ class LoginFragment : Fragment() {
             }
         }
 
+        viewModel.onLoading.observe(
+            viewLifecycleOwner,
+        ) {
+            if (it) {
+                showLoading(view)
+            } else {
+                hideLoading(view)
+            }
+        }
+
         viewModel.idErrorMsg.observe(
             viewLifecycleOwner,
         ) { msg ->
             emailField.error = msg
         }
+    }
 
-        viewModel.passwordErrorMsg.observe(
-            viewLifecycleOwner,
-        ) { msg ->
-            passwordField.error = msg
-        }
+    private fun showLoading(view: View) {
+        val loadingView: View = view.findViewById(R.id.progress_circular_view)
+        val loadingProgressBar: ProgressBar = view.findViewById(R.id.progress_circular)
+        loadingView.visibility = View.VISIBLE
+        loadingProgressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideLoading(view: View) {
+        val loadingView: View = view.findViewById(R.id.progress_circular_view)
+        val loadingProgressBar: ProgressBar = view.findViewById(R.id.progress_circular)
+        loadingView.visibility = View.GONE
+        loadingProgressBar.visibility = View.GONE
     }
 }

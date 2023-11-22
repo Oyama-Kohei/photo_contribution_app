@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1043483462273",
+    "project_id": "android-tdc-trip-2023",
+    "storage_bucket": "android-tdc-trip-2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043483462273:android:847a8e28808437a34c9b80",
+        "android_client_info": {
+          "package_name": "com.example.android_trip_2023_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvEcs7-alERv7blEIX83PUbOIshmTjfFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,9 +6,13 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="black60">#99000000</color>
     <color name="gray20">#33808080</color>
     <color name="gray">#FF808080</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="linkColor">#3366BB</color>
+    <color name="mapBackColor">#2C8D30</color>
+    <color name="backPink">#F8DCE6</color>
 
     // エラーカラー
     <color name="error">#FF0062</color>

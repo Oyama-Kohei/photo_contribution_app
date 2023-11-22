@@ -3,16 +3,16 @@
     tools:ignore="MissingDefaultResource">
     <item
         android:id="@+id/navigation_activity"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="activity"/>
+        android:icon="@drawable/baseline_emoji_events_24"
+        android:title="アクティビティ" />
 
     <item
         android:id="@+id/navigation_team"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="team"/>
+        android:icon="@drawable/baseline_family_restroom_24"
+        android:title="チーム" />
 
     <item
         android:id="@+id/navigation_contribution"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="contribution"/>
+        android:icon="@drawable/baseline_app_shortcut_24"
+        android:title="投稿"/>
 </menu>

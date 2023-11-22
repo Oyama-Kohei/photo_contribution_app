@@ -5,7 +5,6 @@ import android.content.res.Resources
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.android_trip_2023_app.R
-import com.example.android_trip_2023_app.model.LoginResponse
 import com.example.android_trip_2023_app.repository.LoginApiRepositoryImpl
 import com.example.android_trip_2023_app.utils.ResultHandler
 import com.example.android_trip_2023_app.utils.TestCoroutinesRule

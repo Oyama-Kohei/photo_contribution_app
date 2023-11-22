@@ -2,9 +2,8 @@ package com.example.android_trip_2023_app.activity
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.FragmentManager
+import androidx.appcompat.app.AppCompatActivity
 import com.example.android_trip_2023_app.R
 
 class HomeActivity : AppCompatActivity() {
@@ -18,4 +17,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
     }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {}
 }
